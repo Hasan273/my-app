@@ -4,21 +4,45 @@ import {Routes, Route} from 'react-router-dom';
 import {useState} from "react";
 import {uid} from "uid";
 import Header from "./components/Header";
+import {BiEdit} from 'react-icons/bi';
+import {AiFillDelete} from 'react-icons/ai'
+import {AiFillCheckSquare} from 'react-icons/ai'
 
 
 function App() {
   const [contacts,setContacts] = useState([
     {
     id: 1,
-    name: "Alex Packer",
+    name: "Hasanudin",
   },
   {
     id: 2,
-    name: "Alex Picker",
+    name: "Sehabudin",
+  },
+  {
+    id: 3,
+    name: "Aldiansyah",
+  },
+  {
+    id: 4,
+    name: "Zaki Fauji",
+  },
+  {
+    id: 5,
+    name: "Fikri Hida",
+  },
+  {
+    id: 6,
+    name: "Naufal Hid",
+  },
+  {
+    id: 7,
+    name: "Azki Zianu",
   }
 ]);
 
 const [isUpdate,setIsUpdate] = useState({id:null, status: false});
+const [query,setQuery]= useState("");
 const [formData,setFormData] = useState({
   name: ""
 })
@@ -64,6 +88,7 @@ function handleDelete(id){
   let filteredData = data.filter(contact => contact.id !== id);
   setContacts(filteredData);
 }
+
   return (
     <div className='container'>
     <div className='app-wrapper'>
@@ -71,17 +96,34 @@ function handleDelete(id){
         <Header />
       </div>
 
-      <form onSubmit= {handleSumbit} className="px-3 py-4">
-        <div className="form-group">
+      <div className="app">
+    <input type="text" placeholder="Search..." className="form-control"  onChange={e=>setQuery(e.target.value)}/>
+    
+    <span className="list">
+    {contacts.filter((contact)=>contact.name.toLowerCase().includes(query)).map((contact)=> (
+      <span key={contact.id} className="list-item">{contact.name}
+      <AiFillCheckSquare className='edit-icon'/>
+       <BiEdit onClick= {()=>handleEdit(contact.id)} />
+        <AiFillDelete onClick= {()=>handleDelete(contact.id)} className='delete-icon'/>
+            </span>
+    ))}
+    </span>
+    <form onSubmit= {handleSumbit} className="px-3 py-4">
+        {/* <div className="form-group"> */}
           {/* <label htmlFor="">Name</label> */}
-          <input type="text" className="form-control" onChange={handleChange} value= {formData.name} name="name" />
+          {/* <input type="text" className="form-control"placeholder="Search..." /> */}
+          <input type="text" className="form-control" placeholder="Sumbit" onChange={handleChange} value= {formData.name} name="name" />
           <button type="submit" className="button-Add">
-            Save
+            save
           </button>
-        </div>
+        {/* </div> */}
       </form>
+    
+    </div>
 
-      <List handleEdit={handleEdit} handleDelete={handleDelete}data={contacts} />
+      
+
+      {/* <List handleEdit={handleEdit} handleDelete={handleDelete}data={contacts}/> */}
     </div>
     </div>
   );

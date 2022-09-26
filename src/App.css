@@ -1,7 +1,7 @@
 
 
 .container{
-  background: linear-gradient(to right bottom, #e1b382, #c89666);
+  background: linear-gradient(to right bottom, #12343b, #c89666);
   width:100%;
   min-height: 100vh;
   display: flex;
@@ -18,7 +18,7 @@
   outline: none;
   width: 260px;
   padding: 15px;
-  margin-right: 25px;
+  margin-right: 15px;
   font-size: 20px;
   color: #ccc;
   background-color: #000000;
@@ -31,7 +31,7 @@
   font-size: 20px;
   border-radius: 10px;
   border: 0;
-  background-color: #f1af71;
+  background-color: #12343b;
   cursor: pointer;
 }
 .buttonEdit{
@@ -47,6 +47,7 @@
   cursor: pointer; */
   color: #000;
   margin-left: 120px;
+  justify-items: right;
 }
 
 .buttonDel{
@@ -64,24 +65,50 @@
   margin-right: 0px;
 }
 .app-wrapper{
-  background-color: #12343b;
+  background-color: #ccc;
   text-align: center;
-  min-width: 600px;
+  min-width: 100px;
   min-height: 650px;
   padding: 30px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 3px 6px 40px #000;
+  box-shadow: 3px 6px 40px rgb(82, 80, 80);
   margin-bottom:10px;
 }
 
 .list-item{
   display: flex;
-  margin: 20px 0;
-  border: 1px solid #ccc;
+  margin: 10px 0;
+  border: 5px solid #123;
   border-radius: 10px;
   padding: 10px;
   max-height: 30px;
+}
+.button-complete,
+.button-delete,
+.button-edit{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.button-complete{
+  color: #ff6c6c;
+  margin-right: 10px;
+}
+
+.button-edit{
+  color: #e2d029;
+  margin-right: 10px;
+}
+.icons{
+  display: flex;
+}
+.button-delete{
+  color: lightseagreen;
 }
 .App-logo {
   height: 40vmin;
@@ -107,6 +134,13 @@
 
 .App-link {
   color: #61dafb;
+}
+.edit-icon{
+  display: flex;
+  margin-left: 250px;
+}
+.delete-icon{
+  display: flex;
 }
 
 @keyframes App-logo-spin {
